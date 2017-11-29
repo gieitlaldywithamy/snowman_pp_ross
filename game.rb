@@ -15,7 +15,8 @@ class Game
   end
 
   def guess(letter)
-    @guessed_letters << letter
+    @guessed_letters << letter unless @guessed_letters.include?(letter)
+
     if correct_guess(letter)
       return true
     else
@@ -38,4 +39,12 @@ class Game
     return @hidden_word.hidden_word == @hidden_word.display(@guessed_letters)
 
   end
+
+  def is_lost?()
+   return @player.lives <= 0
+ end
+
+ def is_won?()
+   return !@hidden_word.include?("*")
+ end
 end

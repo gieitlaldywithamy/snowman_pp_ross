@@ -9,8 +9,8 @@ class HiddenWord
     @hidden_word = word.downcase
   end
 
-  def display(guessed_letters)
-  
+  def display(guessed_letters = [])
+
     hidden_word_array = @hidden_word.split("")
 
     display_string = ""
@@ -22,13 +22,18 @@ class HiddenWord
   end
 
   def convert_input_to_display(letter, guessed_letters)
-    if letter == ' '
+    if letter == ' ' 
       return ' '
     elsif guessed_letters.include? letter
        return letter
    else
       return "*"
     end
+  end
+
+
+  def include?(letter)
+    return @hidden_word.include?(letter)
   end
 
 

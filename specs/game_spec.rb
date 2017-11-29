@@ -57,6 +57,12 @@ def test_game_end
   assert_equal(true, @game.game_end)
 end
 
+def test_guess_letter__duplicates_dont_count
+    @game.guess("t")
+    @game.guess("t")
+    assert_equal(["t"], @game.guessed_letters)
+  end
+
 def test_check_hidden_word
   @game.guess('n')
   @game.guess('y')
