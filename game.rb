@@ -14,6 +14,16 @@ class Game
     return @hidden_word.hidden_word.include?(letter)
   end
 
+
+
+    def reveal_word()
+    @hidden_word.display(@guessed_letters)
+  end
+
+  def lives_remaining()
+   return @player.lives
+ end
+
   def guess(letter)
     @guessed_letters << letter unless @guessed_letters.include?(letter)
 
@@ -35,7 +45,7 @@ class Game
 
   def check_hidden_word
     # p @hidden_word.display(@guessed_letters)
-    # p @guessed_letters
+     p @hidden_word
     return @hidden_word.hidden_word == @hidden_word.display(@guessed_letters)
 
   end
@@ -45,6 +55,6 @@ class Game
  end
 
  def is_won?()
-   return !@hidden_word.include?("*")
+   return check_hidden_word
  end
 end
